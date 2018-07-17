@@ -1,5 +1,6 @@
 package net.robertocrespo.microservices.greeting;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class GreetingServiceController {
-	
-	
-	private static final String template = "Hello, %s!";
+	@Value("${password}")
+	private String password;
+	private static final String template = "Hello, %s! y password: %s";
 	
 	/**
 	 * Say Hello
@@ -25,7 +26,7 @@ public class GreetingServiceController {
 	
 	@RequestMapping("/greeting/{name}")
     public String greeting2(@PathVariable("name") String name) {
-        return String.format(template, name) ;		
+        return String.format(template, name, password) ;
     }
 
 }
