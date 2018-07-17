@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: greeting-service
+  cloud:
+    config:
+      failFast: true
+      uri: http://localhost:8888
+      username: hans
+      password: hans
+
+encrypt:
+  key: test
